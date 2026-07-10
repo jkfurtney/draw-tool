@@ -4,17 +4,22 @@ import PickerScreen from './screens/PickerScreen'
 import ImageScreen from './screens/ImageScreen'
 import { listImages, addImage, getImageBlob, deleteImage } from './lib/db'
 import { loadImageBitmap } from './lib/imageProcessing'
+import { loadGrid, saveGrid } from './lib/gridSettings'
 
 function App() {
   const [images, setImages] = useState([])
   const [selectedId, setSelectedId] = useState(null)
   const [bitmap, setBitmap] = useState(null)
-  const [grid, setGrid] = useState({ enabled: false, divisions: 4 })
+  const [grid, setGrid] = useState(loadGrid)
   const [error, setError] = useState(null)
 
   useEffect(() => {
     listImages().then(setImages)
   }, [])
+
+  useEffect(() => {
+    saveGrid(grid)
+  }, [grid])
 
   useEffect(() => {
     if (!selectedId) {
