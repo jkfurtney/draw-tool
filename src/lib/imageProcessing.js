@@ -48,23 +48,30 @@ export function applyThreeValue(ctx, rect, thresholds = [85, 170]) {
 }
 
 // rect here is in CSS-pixel coordinates (drawn through the canvas's dpr transform).
+// `divisions` sets the column count; cells are square, so rows fall out of
+// that cell size and the bottom row may be partial if it doesn't divide evenly.
 export function drawGrid(ctx, rect, divisions) {
   if (!divisions || divisions < 2) return
   ctx.save()
   ctx.strokeStyle = 'rgba(255, 60, 60, 0.7)'
   ctx.lineWidth = 1
+
+  const cellSize = rect.w / divisions
+
   for (let i = 1; i < divisions; i++) {
-    const x = rect.x + (rect.w * i) / divisions
+    const x = rect.x + cellSize * i
     ctx.beginPath()
     ctx.moveTo(x, rect.y)
     ctx.lineTo(x, rect.y + rect.h)
     ctx.stroke()
+  }
 
-    const y = rect.y + (rect.h * i) / divisions
+  for (let y = rect.y + cellSize; y < rect.y + rect.h; y += cellSize) {
     ctx.beginPath()
     ctx.moveTo(rect.x, y)
     ctx.lineTo(rect.x + rect.w, y)
     ctx.stroke()
   }
+
   ctx.restore()
 }
