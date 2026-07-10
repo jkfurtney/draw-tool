@@ -68,6 +68,7 @@ input {
 
 .image-screen {
   min-height: 0;
+  padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
 }
 
 .canvas-wrapper {
