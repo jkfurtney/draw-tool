@@ -20,10 +20,8 @@ export default defineConfig({
         background_color: '#1a1a1a',
         theme_color: '#1a1a1a',
         icons: [
-          // TODO: replace with real 192x192 and 512x512 PNGs before shipping/installing —
-          // Chrome/Android need raster icons for installability, iOS home screen ignores
-          // this manifest entirely and uses the apple-touch-icon link tag instead.
-          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+          { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
         ],
       },
     }),

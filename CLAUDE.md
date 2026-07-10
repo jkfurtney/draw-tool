@@ -35,7 +35,7 @@ Update this file whenever something changes that a future session would need to 
 - Canvas ops must account for `getImageData`/`putImageData` ignoring the canvas's device-pixel-ratio transform — pixel-processing rects need to be in device pixels, grid-drawing rects in CSS pixels (see `ProcessedCanvas.jsx`).
 - Photos are capped at 2000px on the long edge before hitting canvas, since iOS Safari can silently fail on very large canvases.
 - Safari has no `beforeinstallprompt`; users add the PWA to the home screen manually via the Share sheet.
-- `apple-touch-icon` and manifest PNG icons (192/512) are still TODO placeholders in `index.html` / `vite.config.js` — replace before relying on the home-screen icon.
+- App icons (favicon, `apple-touch-icon.png`, manifest PNGs) are a black-and-white pencil glyph rendered from `assets/icon-src/pencil-icon.svg` via `npx resvg-cli --fit-width <n> assets/icon-src/pencil-icon.svg <output>`. Edit the SVG and re-run for each size (32, 180, 192, 512) to change the icon.
 - `crypto.randomUUID()` only exists in secure contexts (https, or localhost) — it silently breaks image uploads when testing over a plain-http LAN address on a phone/tablet. `src/lib/db.js` uses a dependency-free ID generator instead; don't reintroduce `crypto.randomUUID()`.
 
 ## Deployment
