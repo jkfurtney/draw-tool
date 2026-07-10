@@ -2,6 +2,10 @@
 
 A single-page, client-side web app for turning photos into drawing/painting references: greyscale and three-value (light/mid/dark) versions of an image, with an optional grid overlay for grid-method transfer. Built as a PWA for use on an iPad.
 
+Live at **https://jkfurtney.github.io/draw-tool/** — scan to open on a phone/tablet:
+
+![QR code linking to the deployed app](assets/qr-code.png)
+
 Photos are stored locally in the browser (IndexedDB) — nothing is uploaded to a server.
 
 Swipe between screens:
