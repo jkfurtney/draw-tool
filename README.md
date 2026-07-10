@@ -1,16 +1,27 @@
-# React + Vite
+# Sketch Reference Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A single-page, client-side web app for turning photos into drawing/painting references: greyscale and three-value (light/mid/dark) versions of an image, with an optional grid overlay for grid-method transfer. Built as a PWA for use on an iPad.
 
-Currently, two official plugins are available:
+Photos are stored locally in the browser (IndexedDB) — nothing is uploaded to a server.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Swipe between screens:
 
-## React Compiler
+1. **Photos** — pick a stored photo or upload a new one; grid overlay controls live here
+2. **Original** — the photo, fit to screen
+3. **Greyscale**
+4. **Three-Value**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the Oxlint configuration
+- Vite + React (plain JS)
+- `idb-keyval` for local image storage
+- `vite-plugin-pwa` for the manifest + service worker
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Development
+
+```
+npm install
+npm run dev
+```
+
+See `CLAUDE.md` for architecture notes and known iOS/Safari quirks.
