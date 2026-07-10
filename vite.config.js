@@ -4,6 +4,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Served from https://jkfurtney.github.io/draw-tool/, a subpath rather than
+  // the domain root, so asset/manifest URLs need this prefix.
+  base: '/draw-tool/',
   plugins: [
     react(),
     VitePWA({
